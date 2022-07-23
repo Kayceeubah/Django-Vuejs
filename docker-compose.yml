@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./subscription-api
+    volumes:
+      - .:/app3
+      - static_volume:/app3/staticfiles
+      - media_volume:/app3/mediafiles   
+    expose:
+      - 8000
+
+  nginx:
+    build:
+      context: ./subscription-app
+    ports:
+      - "80:80"
+    volumes:
+      - static_volume:/app3/staticfiles
+      - media_volume:/app3/mediafiles    
+    depends_on:
+      - backend
+
+
+volumes:
+  static_volume:
+  media_volume:
+
+
