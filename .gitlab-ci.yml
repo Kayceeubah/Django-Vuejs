@@ -4,7 +4,13 @@ stages:
   - build
   - build-docker
 
-test_vuejs:
+test_demo:
+  stage: test
+  image: node:16.13.1-alpine
+  script:
+    - echo "testing test"
+
+.test_vuejs:
   stage: test
   image: node:16.13.1-alpine
   script:
