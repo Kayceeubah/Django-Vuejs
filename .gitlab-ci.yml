@@ -10,7 +10,7 @@ test_vuejs:
   script:
     - cd subscription-app
     - yarn install 
-    - yarn run test
+    - yarn jest
 
 build_vuejs:
   stage: build
