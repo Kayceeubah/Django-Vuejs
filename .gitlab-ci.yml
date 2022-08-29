@@ -14,6 +14,7 @@ build_vuejs:
   stage: build
   image: node:16.13.1-alpine
   script:
+    - cd subscription-app
     - npm install
     - npm run build
 
