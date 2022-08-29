@@ -7,7 +7,7 @@ run_tests:
   stage: test
   image: python:3.9-alpine
   script:
-    - echo "some test"
+    - echo "some tesst"
 
 build_image:
   stage: build
