@@ -8,7 +8,7 @@ test_vuejs:
   stage: test
   image: node:16.13.1-alpine
   script:
-    - cd subsription-app
+    - cd subscription-app
     - yarn install 
     - yarn test
 
