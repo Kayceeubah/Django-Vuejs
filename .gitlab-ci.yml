@@ -19,6 +19,6 @@ build_image:
   before_script:
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD
   script:
-    - docker build -t gerrome/crud-vuejs-django_backend:1.2 ./subcription-api
+    - docker build -t gerrome/crud-vuejs-django_backend:1.2 /subcription-api
     - docker push gerrome/crud-vuejs-django_backend:1.2
 
