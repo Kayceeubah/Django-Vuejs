@@ -8,7 +8,7 @@ test_demo:
   stage: test
   image: node:16.13.1-alpine
   script:
-    - echo "testing test"
+    - echo "testing testing"
 
 .test_vuejs:
   stage: test
