@@ -39,7 +39,7 @@ build_django:
     - docker build -t gerrome/crud-vuejs-django_backend:1.2 ./subscription-api
     - docker push gerrome/crud-vuejs-django_backend:1.2
 
-build_vue-nginx:
+build_vuejs-nginx:
   stage: build-docker
   image: docker:20.10.16
   services:
