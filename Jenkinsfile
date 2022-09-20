@@ -5,10 +5,10 @@ pipeline {
                 agent any
             steps {
                 sh 'cd subscription-api && docker build -t gerrome/crud-vuejs-django_backend:1.2 .'
-                sh 'cd subscription-app && docker build -t gerrome/crud-vuejs-django_nginx:1.2 .'                           
-                       
+                sh 'cd subscription-app && docker build -t gerrome/crud-vuejs-django_nginx:1.2 .'                                          
         }  
-        stage('Deploy') {
+            
+        stage('Docker push') {
                 agent any
             steps {
                 withCredentials([
