@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        DHUB = credentials('dockerhub')
+    }
     stages {
         stage('Docker build') {
                 agent any
@@ -12,11 +15,8 @@ pipeline {
         stage('Docker push') {
                 agent any
             steps {
-                withCredentials([
-                    usernamePassword(credentials: 'dockerhub', usernameVariable: USER, passwordVariable: PWD)
-                ])
-                sh "docker login -u ${USER} -p ${PWD} && docker push gerrome/crud-vuejs-django_backend:1.2" 
-                sh "docker login -u ${USER} -p ${PWD} && docker push gerrome/crud-vuejs-django_nginx:1.2"                            
+                sh 'docker login -u ${DHUB_USR} -p ${DHUB_PSW} && docker push gerrome/crud-vuejs-django_backend:1.2' 
+                sh 'docker login -u ${DHUB_USR} -p ${DHUB_PSW} && docker push gerrome/crud-vuejs-django_nginx:1.2'                            
             }
         }
             
