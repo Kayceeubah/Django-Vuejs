@@ -22,7 +22,7 @@ pipeline {
         stage('Docker deploy') {
                 agent any
             steps {
-                sh 'docker-compose pull && docker-compose up'
+                sh 'docker-compose pull && docker-compose up -d'
             }  
         }          
 
