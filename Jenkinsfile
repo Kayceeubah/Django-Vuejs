@@ -4,6 +4,17 @@ pipeline {
         DHUB = credentials('dockerhub')
     }
     stages {
+        
+        def remote = [:]
+        remote.name = 'node2'
+        remote.host = 'https://3c44-129-56-51-209.eu.ngrok.io/'
+        remote.user = 'victor'
+        remote.password = 'Ifah6354!'
+        remote.allowAnyHosts = true
+        stage('Remote SSH') {
+            sshCommand remote: remote, command: "ls -lrt"
+            }
+        
         stage('Docker build') {
                 agent any
             steps {
