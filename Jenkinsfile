@@ -8,7 +8,8 @@ pipeline {
                 agent any
             steps {
                 sh 'ssh -o StrictHostKeyChecking=no victor@192.168.56.107'  
-            }    
+            }  
+        }
             
         stage('Docker build') {
                 agent any
