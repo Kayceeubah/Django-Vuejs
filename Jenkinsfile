@@ -8,7 +8,6 @@ pipeline {
         stage('Docker deploy') {
                 agent any
             steps {
-                sh 'ssh -o StrictHostKeyChecking=no victor@192.168.56.107 && cd crud-vuejs-django'
                 sh 'docker-compose pull && docker-compose up'
             }  
         }        
