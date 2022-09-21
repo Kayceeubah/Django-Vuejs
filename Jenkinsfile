@@ -19,7 +19,7 @@ pipeline {
                 sh 'docker login -u ${DHUB_USR} -p ${DHUB_PSW} && docker push gerrome/crud-vuejs-django_nginx:1.2'                            
             }
         }
-        stage('Docker deploy') {
+        stage('Docker-compose deploy') {
                 agent any
             steps {
                 sh 'docker-compose pull && docker-compose up -d'
