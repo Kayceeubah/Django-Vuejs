@@ -3,14 +3,7 @@ pipeline {
     environment {
         DHUB = credentials('dockerhub')
     }
-    stages {
-
-        stage('Docker deploy') {
-                agent any
-            steps {
-                sh 'docker-compose pull && docker-compose up'
-            }  
-        }        
+    stages {      
         stage('Docker build') {
                 agent any
             steps {
@@ -26,6 +19,12 @@ pipeline {
                 sh 'docker login -u ${DHUB_USR} -p ${DHUB_PSW} && docker push gerrome/crud-vuejs-django_nginx:1.2'                            
             }
         }
+        stage('Docker deploy') {
+                agent any
+            steps {
+                sh 'docker-compose pull && docker-compose up'
+            }  
+        }          
 
     }
     post { 
