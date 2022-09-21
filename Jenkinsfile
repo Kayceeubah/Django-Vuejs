@@ -22,6 +22,7 @@ pipeline {
         stage('Docker-compose deploy') {
                 agent any
             steps {
+                sh 'docker stop crud2_nginx_1 && docker stop crud2_backend_1'
                 sh 'docker-compose pull && docker-compose up -d'
             }  
         }          
