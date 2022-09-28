@@ -1,10 +1,10 @@
 version: "3.8"
 
 services:
-  backend:
+  api:
     #build:
     #  context: ./subscription-apip
-    image: gerrome/crud-vuejs-django_backend:1.2
+    image: gerrome/django-vuejs_api:1
     volumes:
       - .:/app3
       - static_volume:/app3/staticfiles
@@ -12,8 +12,8 @@ services:
     expose:
       - 8000
 
-  nginx:
-    image: gerrome/crud-vuejs-django_nginx:1.2
+  app:
+    image: gerrome/django-vuejs_app:1
     #build:
     #  context: ./subscription-app
     ports:
