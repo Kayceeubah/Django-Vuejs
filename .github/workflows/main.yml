@@ -33,6 +33,6 @@ jobs:
       - name: Build and push frontend
         uses: docker/build-push-action@v3
         with:
-          context: ./subsciption-app
+          context: ./subscription-app
           push: true
           tags: gerrome/django-vuejs_app:1 
