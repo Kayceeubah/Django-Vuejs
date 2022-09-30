@@ -36,14 +36,14 @@ export default {
     methods: {
         deleteSubscription: function(subscr) {
             if (confirm('Delete ' + subscr.name)) {
-                axios.delete(`http://127.0.0.1:8000/api/subscriptions/${subscr.id}`)
+                axios.delete(`http://api:8000/api/subscriptions/${subscr.id}`)
                     .then( response => {
                         this.all();
                     });
             }
         },
         all: function () {
-            axios.get('http://127.0.0.1:8000/api/subscriptions/')
+            axios.get('http://api:8000/api/subscriptions/')
                 .then( response => {
                     this.subscriptions = response.data
                 });

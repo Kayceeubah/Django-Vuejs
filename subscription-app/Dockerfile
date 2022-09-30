@@ -16,7 +16,9 @@ RUN npm run build
 
 FROM nginx:1.19.0-alpine
 
+EXPOSE 3000
+
 COPY --from=build /app3/dist /usr/share/nginx/html
 
-COPY default.conf /etc/nginx/conf.d/default.conf:ro
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 

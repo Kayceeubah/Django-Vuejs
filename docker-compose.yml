@@ -2,9 +2,9 @@ version: "3.8"
 
 services:
   api:
-    #build:
-    #  context: ./subscription-apip
-    image: gerrome/django-vuejs_api:1
+    build:
+      context: ./subscription-api
+    #image: gerrome/django-vuejs_api:1
     volumes:
       - .:/app3
       - static_volume:/app3/staticfiles
@@ -13,17 +13,24 @@ services:
       - 8000
 
   app:
-    image: gerrome/django-vuejs_app:1
-    #build:
-    #  context: ./subscription-app
+    build:
+      context: ./subscription-app
+    #image: gerrome/django-vuejs_app:1      
     ports:
-      - "80:80"
+      - "3000:3000"
     volumes:
       - static_volume:/app3/staticfiles
       - media_volume:/app3/mediafiles    
     depends_on:
-      - backend
+      - api
 
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app      
 
 volumes:
   static_volume:
