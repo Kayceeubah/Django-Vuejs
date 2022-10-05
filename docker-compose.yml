@@ -9,8 +9,8 @@ services:
       - .:/app3
       - static_volume:/app3/staticfiles
       - media_volume:/app3/mediafiles   
-    expose:
-      - 8000
+    ports:
+      - 8000:8000
 
   app:
     #build:
