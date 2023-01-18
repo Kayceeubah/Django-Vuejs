@@ -92,7 +92,7 @@ export default {
                 }
                 console.log(this.currency)
                 axios
-                    .post('http://192.168.56.117:8000/api/subscriptions/',
+                    .post('/api/subscriptions/',
                         this.subscription
                     )
                     .then(response => {
