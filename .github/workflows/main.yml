@@ -35,7 +35,7 @@ jobs:
         with:
           context: ./subscription-app
           push: true
-          tags: gerrome/django-vuejs_app:1 
+          tags: gerrome/django-vuejs_app:2
 
       - name: Build and push nginx
         uses: docker/build-push-action@v3
