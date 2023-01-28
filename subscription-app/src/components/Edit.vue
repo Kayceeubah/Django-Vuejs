@@ -82,7 +82,7 @@ export default {
         }
     },
     mounted() {
-        axios.get(`http://victorsapp.20.81.99.221.nip.io/api/subscriptions/` + this.$route.params.id)
+        axios.get(`http://victorsapp.20.81.99.221.nip.io/api/api/subscriptions/` + this.$route.params.id)
             .then( response => {
                 console.log(response.data)
                 this.subscription = response.data
@@ -96,7 +96,7 @@ export default {
                     return;
                 }
                 axios
-                    .put(`http://victorsapp.20.81.99.221.nip.io/api/subscriptions/${this.subscription.id}/`,
+                    .put(`http://victorsapp.20.81.99.221.nip.io/api/api/subscriptions/${this.subscription.id}/`,
                         this.subscription
                     )
                     .then(response => {
