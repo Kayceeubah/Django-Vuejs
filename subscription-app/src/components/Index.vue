@@ -36,14 +36,14 @@ export default {
     methods: {
         deleteSubscription: function(subscr) {
             if (confirm('Delete ' + subscr.name)) {
-                axios.delete(`http://20.124.61.232/api/subscriptions/${subscr.id}`)
+                axios.delete(`http://victorsapp.20.81.99.221.nip.io/api/subscriptions/${subscr.id}`)
                     .then( response => {
                         this.all();
                     });
             }
         },
         all: function () {
-            axios.get(`http://20.124.61.232/api/subscriptions/`)
+            axios.get(`http://victorsapp.20.81.99.221.nip.io/api/subscriptions/`)
                 .then( response => {
                     this.subscriptions = response.data
                 });
