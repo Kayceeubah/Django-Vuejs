@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        DHUB = credentials('dockerhub')
-    }
     stages {      
         stage('Docker build') {
                 agent any
@@ -10,19 +7,19 @@ pipeline {
                 sh 'echo building'  
             }                                        
         }  
-            
+    }   
         stage('Docker push') {
                 agent any
             steps {
                 sh 'echo pushing'       
             }
         }
-        stage('Docker-compose deploy') {
-                agent any
+        stage('Deploy to Staging') {
+                 agent any          
             steps {
-                sh 'echo deploying'
-            }  
-        }          
-
-    }
+                sshagent(credentials: ['server_ssh_key']) {
+                   sh 'ssh -o StrictHostKeyChecking=no user@remote_server "cd project_directory && docker-compose up -d"'
+                    }
+            }
+        }
 }
