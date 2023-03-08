@@ -3,7 +3,7 @@ pipeline {
     stages {  
         stage('Build Images') {
             agent {
-                docker { image 'docker:latest'}
+                docker { image 'docker:20.10.16-dind'}
             }    
             steps {
                 sh 'cd backend-folder && docker build -t backend-image:tag .'
