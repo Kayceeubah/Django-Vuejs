@@ -1,12 +1,7 @@
 pipeline {
     agent any
     stages {  
-        stage('Build Images') {
-            agent {
-                docker { 
-                    image 'docker:latest'
-                       }
-            }    
+        stage('Build Images') {  
             steps {
                 sh 'cd backend-folder && docker build -t backend-image:tag .'
                 sh 'cd frontend-folder && docker build -t frontend-image:tag .'
