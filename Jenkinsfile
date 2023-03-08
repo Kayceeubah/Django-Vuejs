@@ -1,13 +1,19 @@
 pipeline {
     agent any
-    stages {      
-        stage('Deploy to Staging') {
-                 agent any          
+    stages {  
+        stage('Build Images') {
+            agent {
+                docker { image 'docker:latest'}
+            }    
             steps {
-                sshagent(credentials: ['server_ssh_key']) {
-                   sh 'ssh -o StrictHostKeyChecking=no ubuntu@54.87.15.119 "touch test.txt"'
-                    }
-            }
-        }
+                sh 'cd backend-folder && docker build -t backend-image:tag .'
+                sh 'cd frontend-folder && docker build -t frontend-image:tag .'
+                withCredentials([
+                    usernamePassword(credentials: 'dockerhub', usernameVariable: USER, passwordVariable: PWD)
+                ])
+                sh "docker login -u ${USER} -p ${PWD} && docker push backend-image:tag" 
+                sh "docker login -u ${USER} -p ${PWD} && docker push frontend-image:tag"                  
+            }                           
+        }  
     }
 }
