@@ -27,7 +27,7 @@ jobs:
         with:
           context: ./subscription-api
           push: true
-          tags: gerrome/django-vuejs_api:2
+          tags: gerrome/django-vuejs_api:3
        
 
       - name: Build and push frontend

@@ -20,5 +20,5 @@ COPY --from=build /app3/dist /usr/share/nginx/html
 
 COPY --from=build /app3 /usr/share/nginx/html
 
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf:ro
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
